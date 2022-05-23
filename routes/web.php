@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\KontakController;
+use App\Http\Controllers\Frontend\LayananController;
+use App\Http\Controllers\Frontend\PortofolioController;
+use App\Http\Controllers\Frontend\TentangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +18,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::namespace('/')->group(function () {
+
+    Route::get('/', [HomeController::class, 'home']);
+    Route::get('tentang', [TentangController::class, 'tentang']);
+    Route::get('layanan', [LayananController::class, 'layanan']);
+    Route::get('portofolio', [PortofolioController::class, 'portofolio']);
+    Route::get('kontak', [KontakController::class, 'kontak']);
+
 });
